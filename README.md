@@ -78,6 +78,6 @@ Example:
                 ga_file_template="template/w4m-sacurine-statistics.ga" \
                 output_path="output" \
                 log_file="MTBLS404_logs.csv" \
-                galaxy_url="http://193.62.54.91:30700" \
+                galaxy_url="http://127.0.0.1:30700" \
                 galaxy_key="ce30966564d6a42b22f951ca023081ed"
 ```
