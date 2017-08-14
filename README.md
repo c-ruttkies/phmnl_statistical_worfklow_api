@@ -15,6 +15,7 @@ This script processes all assays and runs the statistics for all factor values f
 ```bash
 git clone https://github.com/c-ruttkies/phmnl_statistical_worfklow_api.git
 cd phmnl_statistical_worfklow_api
+mkdir output studies template
 ```
 
 - checkout isatab2w4m scripts<br>
