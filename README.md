@@ -2,6 +2,9 @@
 Run the statistical workflow published and maintained by Workflow4Metabolomics within the PhenoMeNal EU project. The workflow processes a Metabolights study (http://www.ebi.ac.uk/metabolights/) and generates univariate and multivariate statistics. For more information please visit to https://github.com/phnmnl/phenomenal-h2020/wiki/Sacurine-statistical-workflow.
 The script uses wft4galaxy (http://wft4galaxy.readthedocs.io) as API accessing a Galaxy instance with an installed PhenoMeNal e-infrastructure.
 
+## Description
+This script processes all assays and runs the statistics for all factor values found in the investigation file of the given study.
+
 ## Requirements
 - R >= 3.4.0
 - docker (wft4galaxy)
