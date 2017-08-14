@@ -34,6 +34,7 @@ a_sacurine.txt  audit  i_sacurine.txt  m_sacurine.txt  s_sacurine.txt
 ## Usage
 - display help message by simply running the script without arguments
 - at the end you can find the example command for processing a single MTBLS study
+- make sure to adapt galaxy_url and galaxy_key to point to your PhenoMeNal Galaxy instance
 
 ```bash
 ./script/run_statistical_workflow.r 
