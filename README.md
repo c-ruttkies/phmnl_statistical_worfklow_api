@@ -66,7 +66,7 @@ Description:
 Example: 
 
         ./run_statistical_workflow.r isatab2w4m="mtbls-dwnld/isatab2w4m" \
-                study_path="/vol/metabolights/studies/public/" \
+                study_path="studies" \
                 study_name="MTBLS404" \
                 ga_file_template="template/w4m-sacurine-statistics.ga" \
                 output_path="output" \
