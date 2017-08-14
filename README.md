@@ -37,8 +37,10 @@ a_sacurine.txt  audit  i_sacurine.txt  m_sacurine.txt  s_sacurine.txt
 - make sure to adapt galaxy_url and galaxy_key to point to your PhenoMeNal Galaxy instance
 
 ```bash
-./script/run_statistical_workflow.r 
+./scripts/run_statistical_workflow.r 
+```
 
+```bash
 Usage: ./run_statistical_workflow.r isatab2w4m=... study_path=... study_name=... ga_file_template=... output_path=... log_file=... galaxy_url=... galaxy_key=...
 
 
