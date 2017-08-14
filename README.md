@@ -51,7 +51,7 @@ Arguments:
 
         log_file - path to csv file used for log messages
 
-        galaxy_url - url to Galaxy server on which to run the workflow
+        galaxy_url - url to Galaxy server with installed PhenoMeNal on which to run the workflow
 
         galaxy_key - API key to access the Galaxy server
 
