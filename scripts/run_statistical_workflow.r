@@ -403,7 +403,7 @@ main <- function (sacurine.script, study.name, log.file, study.path, wft4galaxy.
                 # check if successful
                 # variable success contains empty string if 
                 if(!file.exists(sample.file) || !file.exists(variable.file) || !file.exists(matrix.file)) {
-                    write(paste("\"", study.name, "\",", "\"", assay,"\"," , "\"",factors[factor.index],"\",", "\"Error 5: Problem when creating Sacurine input files\",", "\"", command, "\"", sep = ""), file=log.file, append=TRUE)
+                    write(paste("\"", study.name, "\",", "\"", assay,"\"," , "\"",factors[factor.index],"\",", "\"Error 5: Problem when creating input files with isatab2w4m script\",", "\"", command, "\"", sep = ""), file=log.file, append=TRUE)
                     unlink(factor.folder, recursive = T)
                     success <- "error"
                 }
