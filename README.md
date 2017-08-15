@@ -92,3 +92,22 @@ Example:
                 galaxy_url="http://127.0.0.1:30700" \
                 galaxy_key="ce30966564d6a42b22f951ca023081ed"
 ```
+
+## Output
+Usually, wft4galaxy is reporting an error after an initial run:
+```bash
+Ran 1 test in 101.419s
+
+FAILED (failures=1)
+2017-08-15 13:36:25,235 [wft4galaxy.app.runner] [DEBUG]  wft4galaxy.run_tests exiting with code: 1
+```
+This is caused by the fact that no expected result files are available when running the workflow for the first time with a given study. However, after the initial run result files are present in the output folder:
+```bash
+ls output/MTBLS404/a_sacurine/gender/results/sacurine/
+Biosigner_variableMetadata        Multivariate_variableMetadata.diff
+Biosigner_variableMetadata.diff   Univariate_variableMetadata
+Multivariate_sampleMetadata       Univariate_variableMetadata.diff
+Multivariate_sampleMetadata.diff  WorkflowTestCase-sacurine-7f54d014-81be-11e7-a423-0242ac110002.log
+Multivariate_variableMetadata
+```
+Moreover, you will find all result files together with the result PDF files in the new created history of your Galaxy environment.
