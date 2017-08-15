@@ -26,6 +26,15 @@ git clone -b develop https://github.com/workflow4metabolomics/mtbls-dwnld
 
 - install wft4galaxy-docker (visit http://wft4galaxy.readthedocs.io/installation.html#id2)
 
+- install R packages
+```R
+install.packages("getopt")
+install.packages("R.utils")
+# Risa
+source("https://bioconductor.org/biocLite.R")
+biocLite("Risa")
+```
+
 - download MTBLS studies of interest from the Metabolights ftp mirror (ftp://ftp.ebi.ac.uk/pub/databases/metabolights/studies/public/)
 - only the isatab files are needed
 ```
