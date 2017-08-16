@@ -42,7 +42,7 @@ if(length(args)==0) {
       "\t\tga_file_template=\"template/w4m-sacurine-statistics.ga\"",
       "\t\toutput_path=\"output\"",
       "\t\tlog_file=\"MTBLS404_logs.csv\"",
-      "\t\tgalaxy_url=\"http://193.62.54.91:30700\"",
+      "\t\tgalaxy_url=\"http://127.0.0.1:30700\"",
       "\t\tgalaxy_key=\"ce30966564d6a42b22f951ca023081ed\"", sep=" \\\n"),
     "",
     sep = "\n"
