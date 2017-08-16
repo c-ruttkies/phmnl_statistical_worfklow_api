@@ -139,6 +139,10 @@
                     "name": "variableMetadata_out", 
                     "type": "tabular"
                 }, 
+		{
+		    "name": "figure",
+                    "type": "pdf"	
+		},
                 {
                     "name": "information", 
                     "type": "txt"
@@ -149,17 +153,19 @@
                 "top": 609.875
             }, 
             "post_job_actions": {
-                "HideDatasetActioninformation": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "information"
-                }, 
                 "RenameDatasetActionvariableMetadata_out": {
                     "action_arguments": {
                         "newname": "Univariate_variableMetadata"
                     }, 
                     "action_type": "RenameDatasetAction", 
                     "output_name": "variableMetadata_out"
+                },
+		"RenameDatasetActionfigure": {
+                    "action_arguments": {
+                        "newname": "Univariate_figure.pdf"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "figure"
                 }
             }, 
             "tool_errors": null, 
@@ -233,16 +239,6 @@
                 "top": 447.875
             }, 
             "post_job_actions": {
-                "HideDatasetActionfigure": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "figure"
-                }, 
-                "HideDatasetActioninformation": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "information"
-                }, 
                 "RenameDatasetActionsampleMetadata_out": {
                     "action_arguments": {
                         "newname": "Multivariate_sampleMetadata"
@@ -256,7 +252,15 @@
                     }, 
                     "action_type": "RenameDatasetAction", 
                     "output_name": "variableMetadata_out"
+                },
+                "RenameDatasetFigure": {
+                    "action_arguments": {
+                        "newname": "Multivariate_figure.pdf"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "figure"
                 }
+		
             }, 
             "tool_errors": null, 
             "tool_id": "Multivariate", 
@@ -334,27 +338,26 @@
                 "top": 268.875
             }, 
             "post_job_actions": {
-                "HideDatasetActionfigure_boxplot": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "figure_boxplot"
-                }, 
-                "HideDatasetActionfigure_tier": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "figure_tier"
-                }, 
-                "HideDatasetActioninformation": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "information"
-                }, 
                 "RenameDatasetActionvariableMetadata_out": {
                     "action_arguments": {
                         "newname": "Biosigner_variableMetadata"
                     }, 
                     "action_type": "RenameDatasetAction", 
                     "output_name": "variableMetadata_out"
+                },
+		"RenameDatasetActionfigure_boxplot": {
+                    "action_arguments": {
+                        "newname": "Biosigner_figure_boxplot.pdf"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "figure_boxplot"
+                },
+		"RenameDatasetActionfigure_tier": {
+                    "action_arguments": {
+                        "newname": "Biosigner_figure_tier.pdf"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "figure_tier"
                 }
             }, 
             "tool_errors": null, 

@@ -142,6 +142,10 @@ workflows:
    \"SampleMetadata\": \"SAMPLEDATA\"
    \"VariableMetadata\": \"VARIABLEDATA\"
   expected:
+   Univariate_figure.pdf: \"expected/Univariate_figure.pdf\"
+   Multivariate_figure.pdf: \"expected/Multivariate_figure.pdf\"
+   Biosigner_figure_boxplot.pdf: \"expected/Biosigner_figure_boxplot.pdf\"
+   Biosigner_figure_tier.pdf: \"expected/Biosigner_figure_tier.pdf\"
    Univariate_variableMetadata: \"expected/Univariate_variableMetadata.tsv\"
    Multivariate_sampleMetadata: \"expected/Multivariate_sampleMetadata.tsv\"
    Multivariate_variableMetadata: \"expected/Multivariate_variableMetadata.tsv\"
@@ -209,6 +213,10 @@ prepare.wft4galaxy.files <- function(factor.name, factor.folder, wft4galaxy.temp
     file.create(paste(factor.folder,"expected/Multivariate_sampleMetadata.tsv",sep="/"))
     file.create(paste(factor.folder,"expected/Multivariate_variableMetadata.tsv",sep="/"))
     file.create(paste(factor.folder,"expected/Biosigner_variableMetadata.tsv",sep="/"))
+    file.create(paste(factor.folder,"expected/Univariate_figure.pdf",sep="/"))
+    file.create(paste(factor.folder,"expected/Multivariate_figure.pdf",sep="/"))
+    file.create(paste(factor.folder,"expected/Biosigner_figure_boxplot.pdf",sep="/"))
+    file.create(paste(factor.folder,"expected/Biosigner_figure_tier.pdf",sep="/"))
     # copy 
     file.copy(path.to.ga.template, paste(factor.folder, "w4m-sacurine-statistics.ga",sep="/"))
 }
@@ -275,8 +283,8 @@ validate.wft4galaxy.run <- function(factor.folder, galaxy.url) {
     }
     result.files <- dir(paste(factor.folder, "results", "sacurine", sep="/"))
     diff.files.indexes <- grep("\\.diff$", result.files)
-    if(length(diff.files.indexes) != 4) {
-        return(paste("Error 11: Unknown error. Expected 4 diff files in", paste(factor.folder, "results", "sacurine", sep="/"), ". Found only", length(diff.files.indexes)))
+    if(length(diff.files.indexes) != 8) {
+        return(paste("Error 11: Unknown error. Expected 8 diff files in", paste(factor.folder, "results", "sacurine", sep="/"), ". Found only", length(diff.files.indexes)))
     }
     return("")
 }
