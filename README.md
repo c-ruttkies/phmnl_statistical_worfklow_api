@@ -117,10 +117,8 @@ ls output/MTBLS404/a_sacurine/gender/results/sacurine/
 ```
 
 ```bash
-Biosigner_figure_boxplot.pdf       Multivariate_figure.pdf             Univariate_figure.pdf
-Biosigner_figure_boxplot.pdf.diff  Multivariate_figure.pdf.diff        Univariate_figure.pdf.diff
-Biosigner_figure_tier.pdf          Multivariate_sampleMetadata         Univariate_variableMetadata
-Biosigner_figure_tier.pdf.diff     Multivariate_sampleMetadata.diff    Univariate_variableMetadata.diff
-Biosigner_variableMetadata         Multivariate_variableMetadata       WorkflowTestCase-sacurine-f5f91226-826c-11e7-aa96-0242ac110002.log
+Biosigner_figure_boxplot.pdf  Multivariate_figure.pdf        Univariate_figure.pdf
+Biosigner_figure_tier.pdf     Multivariate_sampleMetadata    Univariate_variableMetadata
+Biosigner_variableMetadata    Multivariate_variableMetadata  WorkflowTestCase-sacurine-b72cb547-8339-11e7-81ff-0242ac110002.log
 ```
 Moreover, you will find all result files together with the result PDF files in the new created history of your Galaxy environment.
