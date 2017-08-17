@@ -111,7 +111,7 @@ Ran 1 test in 93.581s
 OK
 2017-08-17 10:50:50,344 [wft4galaxy.app.runner] [DEBUG]  wft4galaxy.run_tests exiting with code: 0
 ```
-AFter the succesful run the workflow result files are present in the output folder:
+After the succesful run the workflow result files are present in the output folder:
 ```bash
 ls output/MTBLS404/a_sacurine/gender/results/sacurine/
 ```
