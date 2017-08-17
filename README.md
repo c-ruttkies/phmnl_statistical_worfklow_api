@@ -55,7 +55,10 @@ a_sacurine.txt  audit  i_sacurine.txt  m_sacurine.txt  s_sacurine.txt
 ```
 
 ```bash
-Usage: ./run_statistical_workflow.r isatab2w4m=... study_path=... study_name=... ga_file_template=... output_path=... log_file=... galaxy_url=... galaxy_key=...
+
+Usage:
+
+        ./scripts/run_statistical_workflow.r isatab2w4m=... study_path=... study_name=... ga_file_template=... output_path=... log_file=... galaxy_url=... galaxy_key=... debug=...
 
 
 Arguments:
@@ -72,10 +75,13 @@ Arguments:
 
         log_file - path to csv file used for log messages
 
-        galaxy_url - url to Galaxy server with installed PhenoMeNal on which to run the workflow
+        galaxy_url - url to Galaxy server on which to run the workflow
 
         galaxy_key - API key to access the Galaxy server
 
+        debug - get debug output from wft4galaxy (true, false) default: false
+
+        logger - enable logger for wft4galaxy (true, false) default: false
 
 Description:
 
