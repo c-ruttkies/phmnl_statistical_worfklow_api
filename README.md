@@ -103,14 +103,15 @@ Example:
 ```
 
 ## Output
-Usually, wft4galaxy is reporting an error after an initial run:
+With the given comparator function wft4galaxy won't test the resulting files against expected output:
 ```bash
-Ran 1 test in 101.419s
+----------------------------------------------------------------------
+Ran 1 test in 93.581s
 
-FAILED (failures=1)
-2017-08-15 13:36:25,235 [wft4galaxy.app.runner] [DEBUG]  wft4galaxy.run_tests exiting with code: 1
+OK
+2017-08-17 10:50:50,344 [wft4galaxy.app.runner] [DEBUG]  wft4galaxy.run_tests exiting with code: 0
 ```
-This is caused by the fact that no expected result files are available when running the workflow for the first time with a given study. However, after the initial run result files are present in the output folder:
+AFter the succesful run the workflow result files are present in the output folder:
 ```bash
 ls output/MTBLS404/a_sacurine/gender/results/sacurine/
 ```
