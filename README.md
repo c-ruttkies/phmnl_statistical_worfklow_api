@@ -39,6 +39,9 @@ biocLite("Risa")
 - only the isatab files are needed
 ```
 ls studies/MTBLS404
+```
+
+```bash
 a_sacurine.txt  audit  i_sacurine.txt  m_sacurine.txt  s_sacurine.txt
 ```
 
