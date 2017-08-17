@@ -5,7 +5,7 @@ options(stringAsfactors = FALSE, useFancyQuotes = FALSE)
 args <- commandArgs(trailingOnly = TRUE)
 
 if(length(args)==0) {
-  help.msg <- paste("", "Usage: ./run_statistical_workflow.r isatab2w4m=... study_path=... study_name=... ga_file_template=... output_path=... log_file=... galaxy_url=... galaxy_key=...",
+  help.msg <- paste("", "Usage: ./run_statistical_workflow.r isatab2w4m=... study_path=... study_name=... ga_file_template=... output_path=... log_file=... galaxy_url=... galaxy_key=... debug=...",
     "",
     "",
     "Arguments:",
@@ -26,6 +26,9 @@ if(length(args)==0) {
     "",
     "\tgalaxy_key - API key to access the Galaxy server",
     "",
+    "\tdebug - get debug output from wft4galaxy (true, false) default: false",
+    "",
+    "\tlogger - enable logger for wft4galaxy (true, false) default: false",
     "",
     "Description:",
     "",
@@ -59,6 +62,8 @@ output <- NA
 log.file <- NA
 galaxy.url <- NA
 galaxy.key <- NA
+debug <- ""
+logger <- ""
 
 for(arg in args)
 {
@@ -95,6 +100,20 @@ for(arg in args)
   if(argCase=="galaxy_key")
   {
     galaxy.key=as.character(value)
+  }
+  if(argCase=="debug")
+  {
+    cur.val=as.character(value)	
+    if(cur.val != "true" && cur.val != "false")stop("debug needs to be 'true' or 'false'!\n")
+    if(as.character(value)=="true")debug="--debug"
+    if(as.character(value)=="false")debug=""
+  }
+  if(argCase=="logger")
+  {
+    cur.val=as.character(value)
+    if(cur.val != "true" && cur.val != "false")stop("logger needs to be 'true' or 'false'!\n")
+    if(as.character(value)=="true")logger="--enable-logger"
+    if(as.character(value)=="false")logger=""
   }
   
 }
@@ -142,14 +161,30 @@ workflows:
    \"SampleMetadata\": \"SAMPLEDATA\"
    \"VariableMetadata\": \"VARIABLEDATA\"
   expected:
-   Univariate_figure.pdf: \"expected/Univariate_figure.pdf\"
-   Multivariate_figure.pdf: \"expected/Multivariate_figure.pdf\"
-   Biosigner_figure_boxplot.pdf: \"expected/Biosigner_figure_boxplot.pdf\"
-   Biosigner_figure_tier.pdf: \"expected/Biosigner_figure_tier.pdf\"
-   Univariate_variableMetadata: \"expected/Univariate_variableMetadata.tsv\"
-   Multivariate_sampleMetadata: \"expected/Multivariate_sampleMetadata.tsv\"
-   Multivariate_variableMetadata: \"expected/Multivariate_variableMetadata.tsv\"
-   Biosigner_variableMetadata: \"expected/Biosigner_variableMetadata.tsv\"", sep="")    
+   Univariate_figure.pdf: 
+    file: \"expected/Univariate_figure.pdf\"
+    comparator: \"simple_comp.always_true_cmp\"
+   Multivariate_figure.pdf: 
+    file: \"expected/Multivariate_figure.pdf\"
+    comparator: \"simple_comp.always_true_cmp\"
+   Biosigner_figure_boxplot.pdf: 
+    file: \"expected/Biosigner_figure_boxplot.pdf\"
+    comparator: \"simple_comp.always_true_cmp\"
+   Biosigner_figure_tier.pdf: 
+    file: \"expected/Biosigner_figure_tier.pdf\"
+    comparator: \"simple_comp.always_true_cmp\"
+   Univariate_variableMetadata: 
+    file: \"expected/Univariate_variableMetadata.tsv\"
+    comparator: \"simple_comp.always_true_cmp\"
+   Multivariate_sampleMetadata: 
+    file: \"expected/Multivariate_sampleMetadata.tsv\"
+    comparator: \"simple_comp.always_true_cmp\"
+   Multivariate_variableMetadata: 
+    file: \"expected/Multivariate_variableMetadata.tsv\"
+    comparator: \"simple_comp.always_true_cmp\"
+   Biosigner_variableMetadata: 
+    file: \"expected/Biosigner_variableMetadata.tsv\"
+    comparator: \"simple_comp.always_true_cmp\"", sep="")    
 
 # retrieve modified factor name
 get.sacurine.factor.name <- function(sample.file, variable.name) {
@@ -221,14 +256,15 @@ prepare.wft4galaxy.files <- function(factor.name, factor.folder, wft4galaxy.temp
     file.copy(path.to.ga.template, paste(factor.folder, "w4m-sacurine-statistics.ga",sep="/"))
 }
 
-# run wft4galaxy in prepared folder
 run.wft4galaxy <- function(factor.folder, galaxy.key, galaxy.url) {
     current.folder <- getwd()
     setwd(factor.folder)
+    working.folder <- getwd()
     command <- paste(
-        "export GALAXY_URL=",galaxy.url,"; ",
-        "export GALAXY_API_KEY=",galaxy.key,"; ",
-        "wft4galaxy-docker --debug runtest -f workflow.yaml --disable-cleanup --enable-logger",
+	"docker run -i --rm -v ", current.folder, "/python/:/python -v ", getwd(), ":/data_input -v ", getwd(), ":/data_output ",
+	"-e PYTHONPATH=/python -e GALAXY_URL=", galaxy.url, " -e GALAXY_API_KEY=", galaxy.key, " ",
+	"crs4/wft4galaxy:latest runtest ", debug, " --server ", galaxy.url, " --api-key ", galaxy.key, " -f /data_input/workflow.yaml ",
+	"-o /data_output/results ", logger, " --disable-cleanup --output-format text",
         sep = ""
     )
     system(command)
@@ -282,9 +318,8 @@ validate.wft4galaxy.run <- function(factor.folder, galaxy.url) {
         }
     }
     result.files <- dir(paste(factor.folder, "results", "sacurine", sep="/"))
-    diff.files.indexes <- grep("\\.diff$", result.files)
-    if(length(diff.files.indexes) != 8) {
-        return(paste("Error 11: Unknown error. Expected 8 diff files in", paste(factor.folder, "results", "sacurine", sep="/"), ". Found only", length(diff.files.indexes)))
+    if(length(result.files) != 9) {
+        return(paste("Error 11: Unknown error. Expected 9 output files in", paste(factor.folder, "results", "sacurine", sep="/"), ". Found ", length(result.files)))
     }
     return("")
 }
