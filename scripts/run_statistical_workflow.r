@@ -318,8 +318,8 @@ validate.wft4galaxy.run <- function(factor.folder, galaxy.url) {
         }
     }
     result.files <- dir(paste(factor.folder, "results", "sacurine", sep="/"))
-    if(length(result.files) != 9) {
-        return(paste("Error 11: Unknown error. Expected 9 output files in", paste(factor.folder, "results", "sacurine", sep="/"), ". Found ", length(result.files)))
+    if(length(result.files) != 8) {
+        return(paste("Error 11: Unknown error. Expected 8 output files in", paste(factor.folder, "results", "sacurine", sep="/"), ". Found ", length(result.files)))
     }
     return("")
 }
